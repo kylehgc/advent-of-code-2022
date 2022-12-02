@@ -38,34 +38,32 @@ const outcomesCorrectStrategy: Outcomes = {
 	'C Y': 3,
 	'C Z': 1,
 };
-
-const getGameScoreWrongStrategy = (game: string) => {
-	
-	if (isAGame(game)) {
-		let score = 0;
-		const [player1, player2] = game.split(' ');
-		score = score + player2.charCodeAt(0) - 87;
-		if (game in outcomesWrongStrategy) {
-			score = score + outcomesWrongStrategy[game];
-		}
-		return score;
-	}
-	return 0;
-};
 const winOutcome: Record<Player2, number> = {
   X: 0,
   Y: 3,
   Z: 6,
 };
 
+const getGameScoreWrongStrategy = (game: string) => {
+	if (isAGame(game)) {
+		let score = 0;
+			if (game in outcomesWrongStrategy) {
+      score = score + game.charCodeAt(2) - 87;
+			score = score + outcomesWrongStrategy[game];
+		}
+		return score;
+	}
+	return 0;
+};
+
+
 const getGameScoreCorrectStrategy = (game: string) => {
   if(isAGame(game)) {
     let score = 0;
-    const [player1, player2] = game.split(' ');
-   
+  
     if(game in outcomesCorrectStrategy) {
-      if(player2 in winOutcome) {
-        score = score + winOutcome[player2 as Player2];
+      if(game[2] in winOutcome) {
+        score = score + winOutcome[game[2] as Player2];
       }
       score = score + outcomesCorrectStrategy[game];
     }

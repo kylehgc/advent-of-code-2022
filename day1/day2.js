@@ -30,30 +30,28 @@ const outcomesCorrectStrategy = {
     'C Y': 3,
     'C Z': 1,
 };
+const winOutcome = {
+    X: 0,
+    Y: 3,
+    Z: 6,
+};
 const getGameScoreWrongStrategy = (game) => {
     if (isAGame(game)) {
         let score = 0;
-        const [player1, player2] = game.split(' ');
-        score = score + player2.charCodeAt(0) - 87;
         if (game in outcomesWrongStrategy) {
+            score = score + game.charCodeAt(2) - 87;
             score = score + outcomesWrongStrategy[game];
         }
         return score;
     }
     return 0;
 };
-const winOutcome = {
-    X: 0,
-    Y: 3,
-    Z: 6,
-};
 const getGameScoreCorrectStrategy = (game) => {
     if (isAGame(game)) {
         let score = 0;
-        const [player1, player2] = game.split(' ');
         if (game in outcomesCorrectStrategy) {
-            if (player2 in winOutcome) {
-                score = score + winOutcome[player2];
+            if (game[2] in winOutcome) {
+                score = score + winOutcome[game[2]];
             }
             score = score + outcomesCorrectStrategy[game];
         }
