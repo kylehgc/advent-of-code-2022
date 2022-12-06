@@ -6,6 +6,7 @@ const doesContain = (pair: string) => {
 	const [elf1, elf2] = pair.split(',')
 	const [elf1beginning, elf1end] = elf1.split('-').map(Number)
 	const [elf2beginning, elf2end] = elf2.split('-').map(Number)
+
 	if (elf1beginning <= elf2beginning && elf1end >= elf2end) {
 		return true
 	}
