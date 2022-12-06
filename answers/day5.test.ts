@@ -17,6 +17,6 @@ describe('day5', () => {
 		const fakeStack2 = ['i', 'j', 'k', 'l', 'm', 'n', 'o', 'p']
 		const [newStack1, newStack2] = moveMany(fakeStack1, fakeStack2, 3)
 		expect(newStack1.join('')).toBe('abcde')
-		expect(newStack2t co.join('')).toBe('ijklmnopfgh')
+		expect(newStack2.join('')).toBe('ijklmnopfgh')
 	})
 })
